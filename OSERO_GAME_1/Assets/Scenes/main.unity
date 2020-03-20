@@ -1504,6 +1504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45047435d48f72e4a8dd090f1030c62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  B_COIN: {fileID: 1967193566105868773, guid: 941bb5db663b2aa47add44771cc029d7, type: 3}
+  W_COIN: {fileID: 5061662343131317949, guid: 90694a1b7c984f941a6bfb7ea54740b4, type: 3}
+  main: {fileID: 854937693}
 --- !u!114 &1018574909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1542,6 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560f57e9a4ea48a4aa03e9d38c365945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EventSystem: {fileID: 1018574904}
 --- !u!1 &1109902555
 GameObject:
   m_ObjectHideFlags: 0

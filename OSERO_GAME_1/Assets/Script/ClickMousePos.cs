@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickMousePos : MonoBehaviour
+public class ClickMousePos : MonoBehaviour //クリックした場所を0~7で返す　枠内でない場合は-1
 {
     public static int posx,posy;
     public static bool Down;
@@ -15,8 +15,10 @@ public class ClickMousePos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Down = false;
         if (Input.GetMouseButtonDown(0))
         {
+            //Debug.Log("MOUSEDOWN");
             Vector2 mousePosition = Input.mousePosition;
             posx = (int)mousePosition.x;
             posy = (int)mousePosition.y;

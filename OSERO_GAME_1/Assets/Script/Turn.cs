@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Turn : MonoBehaviour
+public class Turn : MonoBehaviour //黒と白の順番を管理する
 {
     public static bool turn;
     public GameObject B_turn;
