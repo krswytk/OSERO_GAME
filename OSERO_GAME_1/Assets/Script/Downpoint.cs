@@ -29,30 +29,32 @@ public class Downpoint : MonoBehaviour//クリックした場所にコインを�
             //Debug.Log("DOWNTRUE");
             //Debug.Log(ClickMousePos.posx + " " + ClickMousePos.posy);
 
-
-            if (Turn.turn == true)//黒のターン
+            if (ClickMousePos.posx != -1)
             {
-                copy = IventManeger.COIN[ClickMousePos.posx, ClickMousePos.posy] = 
-                    Instantiate(B_COIN, Vector2.zero, Quaternion.identity, main);//オブジェクトを生成
+                if (Turn.turn == true)//黒のターン
+                {
+                    copy = IventManeger.COIN[ClickMousePos.posx, ClickMousePos.posy] =
+                        Instantiate(B_COIN, Vector2.zero, Quaternion.identity, main);//オブジェクトを生成
 
-                copy.gameObject.transform.localPosition = 
-                    new Vector2(110 * ClickMousePos.posx, 110 * ClickMousePos.posy);//クリックした場所におぶっジェクトを移動
+                    copy.gameObject.transform.localPosition =
+                        new Vector2(110 * ClickMousePos.posx, 110 * ClickMousePos.posy);//クリックした場所におぶっジェクトを移動
 
-                Turn.turn = false;
+                    Turn.turn = false;
 
-                Debug.Log("黒配置");
-            }
-            else if (Turn.turn == false)//白のターン
-            {
-                copy = IventManeger.COIN[ClickMousePos.posx, ClickMousePos.posy] = 
-                    Instantiate(W_COIN, Vector2.zero, Quaternion.identity, main);//オブジェクトを生成
+                    Debug.Log("黒配置");
+                }
+                else if (Turn.turn == false)//白のターン
+                {
+                    copy = IventManeger.COIN[ClickMousePos.posx, ClickMousePos.posy] =
+                        Instantiate(W_COIN, Vector2.zero, Quaternion.identity, main);//オブジェクトを生成
 
-                copy.gameObject.transform.localPosition = 
-                    new Vector2(110 * ClickMousePos.posx, 110 * ClickMousePos.posy);//クリックした場所におぶっジェクトを移動
+                    copy.gameObject.transform.localPosition =
+                        new Vector2(110 * ClickMousePos.posx, 110 * ClickMousePos.posy);//クリックした場所におぶっジェクトを移動
 
-                Turn.turn = true;
+                    Turn.turn = true;
 
-                Debug.Log("白配置");
+                    Debug.Log("白配置");
+                }
             }
             ClickMousePos.Down = false;
         }
