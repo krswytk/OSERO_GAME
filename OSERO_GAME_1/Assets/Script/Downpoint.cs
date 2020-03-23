@@ -27,7 +27,7 @@ public class Downpoint : MonoBehaviour//クリックした場所にコインを�
         {
 
             //Debug.Log("DOWNTRUE");
-            //Debug.Log(ClickMousePos.posx + " " + ClickMousePos.posy);
+            Debug.Log(ClickMousePos.posx + " " + ClickMousePos.posy);
 
             if (ClickMousePos.posx != -1)
             {
