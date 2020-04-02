@@ -22,8 +22,15 @@ public class GaidPoint : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        if(ClickMousePos.Down == true){
+            Gaid();
+        }    
+    }
+
+
+    void Gaid()
     {
         if(turn == true)//黒の時の処理
         {
@@ -69,12 +76,13 @@ public class GaidPoint : MonoBehaviour
                             if (COIN[lp - 1, kp - 1] != null) cp[lp, kp] =+ 1000000;   //下                           +1000000
                         }
 
-                        if (lp - 1 >= 0 && kp - 1 >= 0)
+                        if (lp + 1 < 8 && kp - 1 >= 0)
                         {
                             if (COIN[lp + 1, kp - 1] != null) cp[lp, kp] =+ 10000000;   //右下                        +10000000
-                        }   
+                        }
 
 
+                        Debug.Log("COIN[" + lp + "," + kp + "] = " + cp[lp,kp] );
 
 
 
