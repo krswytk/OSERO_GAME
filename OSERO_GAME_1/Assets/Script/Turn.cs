@@ -14,15 +14,16 @@ public class Turn : MonoBehaviour //黒と白の順番を管理する
         turn = true; // true = 黒　false = 白
         W_turn.SetActive(false);
         B_turn.SetActive(false);
+        CS();
     }
 
     // Update is called once per frame
-    void Update()
+    void CS()
     {
         if(turn == true)
         {
-            W_turn.SetActive(false);
             B_turn.SetActive(true);
+            W_turn.SetActive(false);
         }
         if (turn == false)
         {
