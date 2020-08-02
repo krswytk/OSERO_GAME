@@ -42,6 +42,7 @@ public class ClickMousePos : MonoBehaviour //クリックした場所を0~7で�
                 posy = -1;
             }
             Down = true;
+            Debug.Log(posx +"  "+ posy);
         }
     }
 }

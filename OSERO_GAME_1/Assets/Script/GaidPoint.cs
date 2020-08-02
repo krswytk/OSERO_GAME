@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GaidPoint : MonoBehaviour
 {
-    public static GameObject[,] COIN = IventManeger.COIN;//[横0-7,縦0-7]右下[0,0]左上[7,7]それ以外[-1,-1]
+    public static GameObject[,] COIN;//[横0-7,縦0-7]右下[0,0]左上[7,7]それ以外[-1,-1]
     private bool turn = Turn.turn;
 
 
