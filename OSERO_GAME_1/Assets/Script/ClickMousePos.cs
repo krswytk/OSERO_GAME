@@ -22,7 +22,8 @@ public class ClickMousePos : MonoBehaviour //クリックした場所を0~7で�
             Vector2 mousePosition = Input.mousePosition;
             posx = (int)mousePosition.x;
             posy = (int)mousePosition.y;
-            
+
+            Debug.Log(posx + "  " + posy);
             posx -= 60;
             posy -= 60; //110
             
