@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SetStartCoin : MonoBehaviour
 {
-    [SerializeField] GameObject Main;//キャンバスのメインを格納
     CoinClass[,] Coin;
     // Start is called before the first frame update
     void Start()
     {
-        CoinClass[,] Coin = Main.GetComponent<CcreateCoin>().Coin;
+        CoinClass[,] Coin = this.GetComponent<CcreateCoin>().Coin;
 
         Coin[3, 3].SetCoin(true);
         Coin[4, 4].SetCoin(true);

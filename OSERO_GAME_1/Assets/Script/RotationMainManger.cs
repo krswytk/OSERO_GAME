@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class RotationMainManger : MonoBehaviour
 {
-    [SerializeField] GameObject Main;//キャンバスのメインを格納
     Turn T;
+    GaidPoint GP;
     CoinClass[,] Coin;
     // Update is called once per frame    
     void Start()
     {
-        Coin = Main.GetComponent<CcreateCoin>().Coin;
+        Coin = this.GetComponent<CcreateCoin>().Coin;
         T = this.GetComponent<Turn>();
-
+        GP = this.GetComponent<GaidPoint>();
     }
 
     void Update()
@@ -25,7 +25,8 @@ public class RotationMainManger : MonoBehaviour
                 if (Coin[ClickMousePos.posx, ClickMousePos.posy].GetSet() == false)
                 {
                     Coin[ClickMousePos.posx, ClickMousePos.posy].SetCoin(T.turn);
-                    T.CS();
+                    T.CS();//この時点でターンが切り替わる
+                    GP.Gaid();//ここでターンを呼べば次のターンが取れる　falseで白
                     ClickMousePos.Down = false;
                 }
                 else

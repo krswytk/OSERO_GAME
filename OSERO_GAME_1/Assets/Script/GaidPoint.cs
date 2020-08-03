@@ -1,105 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
+
 public class GaidPoint : MonoBehaviour
 {
-    public static GameObject[,] COIN;//[横0-7,縦0-7]右下[0,0]左上[7,7]それ以外[-1,-1]
-    //private bool turn = Turn.turn;
-
-
-    private int[,] cp = new int[8, 8];//各マスの状態を管理するint型2次元配列
-    
+    Turn T;
+    CoinClass[,] Coin;
+    private bool G;
+    // Update is called o
     // Start is called before the first frame update
     void Start()
     {
-        for (int lp = 0; lp < 8; lp++)
-        {
-            for (int kp = 0; kp < 8; kp++)
-            {
-                cp[lp, kp] = 0;//初期値0を代入
-            }
-        }
+        Coin = this.GetComponent<CcreateCoin>().Coin;
+        T = this.GetComponent<Turn>();
     }
 
-    void Update()
+    public void Gaid()
     {
-        if(ClickMousePos.Down == true){
-            Gaid();
-        }    
-    }
-
-
-    void Gaid()
-    {
-        if(turn == true)//黒の時の処理
+        Debug.Log(T.turn);
+        for(int i = 0; i < 8; i++)
         {
-            for (int lp = 0; lp < 8; lp++)
+            for (int l = 0; l < 8; l++)
             {
-                for (int kp = 0; kp < 8; kp++)
+                if (Coin[i, l].GetSet() == false)//コインが設置されていなければ //共通使用可能？
                 {
-                    if(COIN[lp, kp] = null)
+                    Coin[i, l].Clear();//コインが設置されていなければクリアを行う
+
+                    //上下左右判定
+                    //上から
+                    G = false;
+                    for (int lp = 1; lp < 8; lp++)
                     {
-
-                        if (lp - 1 >= 0 && kp + 1 < 8)
+                        try
                         {
-                            if (COIN[lp - 1, kp + 1] != null) cp[lp, kp] += 1;   //左上                   +1
+                            if (Coin[i, l + lp].GetSet() == true && Coin[i, l + lp].GetFAB() != T.turn){//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i, l + lp].GetSet() == true && Coin[i, l + lp].GetFAB() == T.turn){//コインがある かつ　今と同じ色である
+                                if(G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
                         }
-
-                        if ( kp + 1 < 8)
+                        catch (System.IndexOutOfRangeException)
                         {
-                            if (COIN[lp, kp + 1] != null) cp[lp, kp] += 10;       //上                   +10
+                            Debug.Log("そこはお外ですよ " + " i = " + i + "  l = " + l);
+                            break;
                         }
-
-                        if (lp + 1 < 8 && kp + 1 < 8)
-                        {
-                            if (COIN[lp + 1, kp + 1] != null) cp[lp, kp] =+ 100;   //右上                    +100
-                        }
-
-                        if (lp - 1 >= 0 )
-                        {
-                            if (COIN[lp - 1, kp] != null) cp[lp, kp] =+ 1000;       //左                         +1000
-                        }
-
-                        if (lp + 1 < 8 )
-                        {
-                            if (COIN[lp + 1, kp] != null) cp[lp, kp] =+ 10000;       //右                         +10000
-                        }
-
-                        if (lp - 1 >= 0 && kp - 1 >= 0)
-                        {
-                            if (COIN[lp - 1, kp - 1] != null) cp[lp, kp] =+ 100000;   //左下                      +100000
-                        }
-
-                        if (kp - 1 >= 0)
-                        {
-                            if (COIN[lp - 1, kp - 1] != null) cp[lp, kp] =+ 1000000;   //下                           +1000000
-                        }
-
-                        if (lp + 1 < 8 && kp - 1 >= 0)
-                        {
-                            if (COIN[lp + 1, kp - 1] != null) cp[lp, kp] =+ 10000000;   //右下                        +10000000
-                        }
-
-
-                        Debug.Log("COIN[" + lp + "," + kp + "] = " + cp[lp,kp] );
-
-
-
-
-
-
-
-
                     }
                 }
             }
         }
-
-        if (turn == false)//白の時の処理
-        {
-
-        }
     }
 }
-*/

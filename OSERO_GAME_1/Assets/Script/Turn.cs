@@ -8,13 +8,14 @@ public class Turn : MonoBehaviour //黒と白の順番を管理する
     public bool turn;
     public GameObject B_turn;
     public GameObject W_turn;
+    GaidPoint GP;
     // Start is called before the first frame update
     void Start()
     {
-        turn = false; // true = 白 false = 黒　
-        W_turn.SetActive(false);
-        B_turn.SetActive(false);
-        CS();
+        turn = false; // true = 黒　false = 白 
+        CS();//初手を黒にする
+        GP = this.GetComponent<GaidPoint>();
+        GP.Gaid();//初手のガイドを呼び出す
     }
 
     // Update is called once per frame

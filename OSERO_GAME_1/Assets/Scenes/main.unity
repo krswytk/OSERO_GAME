@@ -689,7 +689,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854937693}
-  - component: {fileID: 854937694}
   m_Layer: 0
   m_Name: main
   m_TagString: Untagged
@@ -711,22 +710,6 @@ Transform:
   m_Father: {fileID: 654119233}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &854937694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 854937692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4efd74769d82c4d90b7448c2f71edf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BlackImage: {fileID: 21300000, guid: e8170c94a80008b40881043f0c040471, type: 3}
-  WhiteImage: {fileID: 21300000, guid: 77524ad2896366c4fb0cb099ee0176ff, type: 3}
-  CoinPrefab: {fileID: 5184149532459305165, guid: 0b53d536bf1b39a4890161b0417ea898,
-    type: 3}
 --- !u!1 &972440240
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +799,8 @@ GameObject:
   - component: {fileID: 1018574909}
   - component: {fileID: 1018574910}
   - component: {fileID: 1018574911}
+  - component: {fileID: 1018574912}
+  - component: {fileID: 1018574913}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -895,6 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c5b24432fe4104d99914e4d24d1c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turn: 0
   B_turn: {fileID: 247497606}
   W_turn: {fileID: 1805596879}
 --- !u!114 &1018574910
@@ -909,7 +895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe1aed3d112be243a859c73220f7753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Main: {fileID: 854937692}
 --- !u!114 &1018574911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,7 +907,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb7129deb3fa844299fea7f14eed37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Main: {fileID: 854937692}
+--- !u!114 &1018574912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018574904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4efd74769d82c4d90b7448c2f71edf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlackImage: {fileID: 21300000, guid: e8170c94a80008b40881043f0c040471, type: 3}
+  WhiteImage: {fileID: 21300000, guid: 77524ad2896366c4fb0cb099ee0176ff, type: 3}
+  GaidImage: {fileID: 21300000, guid: c444f0eeadcb08047b5cfd62a0ed0dac, type: 3}
+  ClearImage: {fileID: 21300000, guid: 80e335b132a825e438a594be5310678a, type: 3}
+  CoinPrefab: {fileID: 5184149532459305165, guid: 0b53d536bf1b39a4890161b0417ea898,
+    type: 3}
+  prent: {fileID: 854937692}
+--- !u!114 &1018574913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018574904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae13222a850d78047aba14924d986420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1072277192
 GameObject:
   m_ObjectHideFlags: 0
