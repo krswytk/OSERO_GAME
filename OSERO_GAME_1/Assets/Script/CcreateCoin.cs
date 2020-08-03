@@ -9,7 +9,7 @@ public class CcreateCoin : MonoBehaviour//初期の設定　すべてのマス�
     [SerializeField] Sprite WhiteImage;//○画像を格納
     [SerializeField] GameObject CoinPrefab;//生成するコインのプレハブ
 
-    CoinClass[,] Coin;
+    public CoinClass[,] Coin;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,7 +29,7 @@ public class CcreateCoin : MonoBehaviour//初期の設定　すべてのマス�
 
 }
 
-class CoinClass
+public class CoinClass
 {
     //基本素材格納
     private Image CSP;//sprit変更用に格納
