@@ -17,7 +17,7 @@ public class GaidPoint : MonoBehaviour
 
     public void Gaid()
     {
-        Debug.Log(T.turn);
+        //Debug.Log(T.turn);
         for(int i = 0; i < 8; i++)
         {
             for (int l = 0; l < 8; l++)
@@ -25,10 +25,9 @@ public class GaidPoint : MonoBehaviour
                 if (Coin[i, l].GetSet() == false)//コインが設置されていなければ //共通使用可能？
                 {
                     Coin[i, l].Clear();//コインが設置されていなければクリアを行う
-
-                    //上下左右判定
-                    //上から
-                    G = false;
+                    
+                    //12時方向から時計回りに
+                    G = false;//上
                     for (int lp = 1; lp < 8; lp++)
                     {
                         try
@@ -47,7 +46,182 @@ public class GaidPoint : MonoBehaviour
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ " + " i = " + i + "  l = " + l);
+                            Debug.Log("そこはお外ですよ");
+                            break;
+                        }
+                    }
+                    G = false;//右上
+                    for (int lp = 1; lp < 8; lp++)
+                    {
+                        try
+                        {
+                            if (Coin[i + lp, l + lp].GetSet() == true && Coin[i + lp, l + lp].GetFAB() != T.turn)
+                            {//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i + lp, l + lp].GetSet() == true && Coin[i + lp, l + lp].GetFAB() == T.turn)
+                            {//コインがある かつ　今と同じ色である
+                                if (G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
+                        }
+                        catch (System.IndexOutOfRangeException)
+                        {
+                            Debug.Log("そこはお外ですよ");
+                            break;
+                        }
+                    }
+                    G = false;//右
+                    for (int lp = 1; lp < 8; lp++)
+                    {
+                        try
+                        {
+                            if (Coin[i + lp, l].GetSet() == true && Coin[i + lp, l].GetFAB() != T.turn)
+                            {//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i + lp, l].GetSet() == true && Coin[i + lp, l].GetFAB() == T.turn)
+                            {//コインがある かつ　今と同じ色である
+                                if (G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
+                        }
+                        catch (System.IndexOutOfRangeException)
+                        {
+                            Debug.Log("そこはお外ですよ");
+                            break;
+                        }
+                    }
+                    G = false;//右下
+                    for (int lp = 1; lp < 8; lp++)
+                    {
+                        try
+                        {
+                            if (Coin[i + lp, l - lp].GetSet() == true && Coin[i + lp, l - lp].GetFAB() != T.turn)
+                            {//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i + lp, l - lp].GetSet() == true && Coin[i + lp, l - lp].GetFAB() == T.turn)
+                            {//コインがある かつ　今と同じ色である
+                                if (G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
+                        }
+                        catch (System.IndexOutOfRangeException)
+                        {
+                            Debug.Log("そこはお外ですよ");
+                            break;
+                        }
+                    }
+                    G = false;//下
+                    for (int lp = 1; lp < 8; lp++)
+                    {
+                        try
+                        {
+                            if (Coin[i, l - lp].GetSet() == true && Coin[i, l - lp].GetFAB() != T.turn)
+                            {//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i, l - lp].GetSet() == true && Coin[i, l - lp].GetFAB() == T.turn)
+                            {//コインがある かつ　今と同じ色である
+                                if (G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
+                        }
+                        catch (System.IndexOutOfRangeException)
+                        {
+                            Debug.Log("そこはお外ですよ");
+                            break;
+                        }
+                    }
+                    G = false;//左下
+                    for (int lp = 1; lp < 8; lp++)
+                    {
+                        try
+                        {
+                            if (Coin[i - lp, l - lp].GetSet() == true && Coin[i - lp, l - lp].GetFAB() != T.turn)
+                            {//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i - lp, l - lp].GetSet() == true && Coin[i - lp, l - lp].GetFAB() == T.turn)
+                            {//コインがある かつ　今と同じ色である
+                                if (G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
+                        }
+                        catch (System.IndexOutOfRangeException)
+                        {
+                            Debug.Log("そこはお外ですよ");
+                            break;
+                        }
+                    }
+                    G = false;//左
+                    for (int lp = 1; lp < 8; lp++)
+                    {
+                        try
+                        {
+                            if (Coin[i - lp, l].GetSet() == true && Coin[i - lp, l].GetFAB() != T.turn)
+                            {//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i - lp, l].GetSet() == true && Coin[i - lp, l].GetFAB() == T.turn)
+                            {//コインがある かつ　今と同じ色である
+                                if (G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
+                        }
+                        catch (System.IndexOutOfRangeException)
+                        {
+                            Debug.Log("そこはお外ですよ");
+                            break;
+                        }
+                    }
+                    G = false;//左上
+                    for (int lp = 1; lp < 8; lp++)
+                    {
+                        try
+                        {
+                            if (Coin[i - lp, l + lp].GetSet() == true && Coin[i - lp, l + lp].GetFAB() != T.turn)
+                            {//コインがある かつ　今とは反対の色である
+                                G = true;//ガイド設置条件を満たしている
+                            }
+                            else if (Coin[i - lp, l + lp].GetSet() == true && Coin[i - lp, l + lp].GetFAB() == T.turn)
+                            {//コインがある かつ　今と同じ色である
+                                if (G == true)//もしガイド設置条件を満たしているなら
+                                {
+                                    Coin[i, l].SetGaid();//ガイドを設置する
+                                    break;
+                                }
+                            }
+                            else break;//何もないならとっととブレイク
+                        }
+                        catch (System.IndexOutOfRangeException)
+                        {
+                            Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
