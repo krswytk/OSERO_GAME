@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetStartCoin : MonoBehaviour
 {
-    [SerializeField] GameObject Main;//●画像を格納
+    [SerializeField] GameObject Main;//キャンバスのメインを格納
     CoinClass[,] Coin;
     // Start is called before the first frame update
     void Start()
@@ -15,12 +15,6 @@ public class SetStartCoin : MonoBehaviour
         Coin[4, 4].SetCoin(true);
         Coin[3, 4].SetCoin(false);
         Coin[4, 3].SetCoin(false);
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }

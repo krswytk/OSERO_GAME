@@ -26,7 +26,6 @@ public class CcreateCoin : MonoBehaviour//初期の設定　すべてのマス�
             }
         }
     }
-
 }
 
 public class CoinClass
@@ -79,7 +78,7 @@ public class CoinClass
         }
     }
 
-    public void C()//何もまだ設置されていなければ、引数に応じたコインが表示される。
+    public void C()//コインを裏返す
     {
         if (SC == false)//特殊コインでなければ
         {
@@ -100,6 +99,12 @@ public class CoinClass
     {
         SC = true;
     }
+
+    public bool GetSet()//コインが設置されているかどうかを返す
+    {
+        return Set;
+    }
+
     public bool GetFAB()//現在黒か白かのGetr 黒ならtrue
     {
         return FAB;

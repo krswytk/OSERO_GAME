@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class GaidPoint : MonoBehaviour
 {
     public static GameObject[,] COIN;//[横0-7,縦0-7]右下[0,0]左上[7,7]それ以外[-1,-1]
-    private bool turn = Turn.turn;
+    //private bool turn = Turn.turn;
 
 
     private int[,] cp = new int[8, 8];//各マスの状態を管理するint型2次元配列
@@ -102,3 +102,4 @@ public class GaidPoint : MonoBehaviour
         }
     }
 }
+*/

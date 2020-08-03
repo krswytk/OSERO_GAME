@@ -5,30 +5,34 @@ using UnityEngine.UI;
 
 public class Turn : MonoBehaviour //黒と白の順番を管理する
 {
-    public static bool turn;
+    public bool turn;
     public GameObject B_turn;
     public GameObject W_turn;
     // Start is called before the first frame update
     void Start()
     {
-        turn = true; // true = 黒　false = 白
+        turn = false; // true = 白 false = 黒　
         W_turn.SetActive(false);
         B_turn.SetActive(false);
         CS();
     }
 
     // Update is called once per frame
-    void CS()
+    public void CS()
     {
         if(turn == true)
         {
-            B_turn.SetActive(true);
-            W_turn.SetActive(false);
-        }
-        if (turn == false)
-        {
+            Debug.Log("白ターンに切り替え");
             B_turn.SetActive(false);
             W_turn.SetActive(true);
+            turn = false;
+        }
+        else if (turn == false)
+        {
+            Debug.Log("黒ターンに切り替え");
+            B_turn.SetActive(true);
+            W_turn.SetActive(false);
+            turn = true;
         }
     }
 }
