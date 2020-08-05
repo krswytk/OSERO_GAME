@@ -6,23 +6,29 @@ public class GaidPoint : MonoBehaviour
 {
     Turn T;
     CoinClass[,] Coin;
+    public bool[,] point;
     private bool G;
+    private bool pass;
     // Update is called o
     // Start is called before the first frame update
     void Start()
     {
         Coin = this.GetComponent<CcreateCoin>().Coin;
         T = this.GetComponent<Turn>();
+        point = new bool[8, 8];
+        //RisetPoint();
     }
 
-    public void Gaid()
+    public void Gaid()//この中でのみ配列参照が出来ていない
     {
+        RisetPoint();
+        pass = true;
         //Debug.Log(T.turn);
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             for (int l = 0; l < 8; l++)
             {
-                if (Coin[i, l].GetSet() == false)//コインが設置されていなければ //共通使用可能？
+                if (Coin[i, l].GetSet() == false)//コインが設置されていなければ
                 {
                     Coin[i, l].Clear();//コインが設置されていなければクリアを行う
                     
@@ -39,14 +45,17 @@ public class GaidPoint : MonoBehaviour
                                 if(G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
@@ -64,14 +73,17 @@ public class GaidPoint : MonoBehaviour
                                 if (G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
@@ -89,14 +101,17 @@ public class GaidPoint : MonoBehaviour
                                 if (G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
@@ -114,14 +129,17 @@ public class GaidPoint : MonoBehaviour
                                 if (G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
@@ -139,14 +157,17 @@ public class GaidPoint : MonoBehaviour
                                 if (G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
@@ -164,14 +185,17 @@ public class GaidPoint : MonoBehaviour
                                 if (G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
@@ -189,14 +213,17 @@ public class GaidPoint : MonoBehaviour
                                 if (G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
@@ -214,17 +241,44 @@ public class GaidPoint : MonoBehaviour
                                 if (G == true)//もしガイド設置条件を満たしているなら
                                 {
                                     Coin[i, l].SetGaid();//ガイドを設置する
+                                    point[i, l] = true;//ガイド座標をtrueに
+                                    pass = false;
                                     break;
                                 }
+                                break;
                             }
                             else break;//何もないならとっととブレイク
                         }
                         catch (System.IndexOutOfRangeException)
                         {
-                            Debug.Log("そこはお外ですよ");
+                            //Debug.Log("そこはお外ですよ");
                             break;
                         }
                     }
+                }
+            }
+        }
+
+        if(pass == true)
+        {
+            T.CS();
+            Gaid();
+        }
+    }
+
+    private void RisetPoint()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            for (int l = 0; l < 8; l++)
+            {
+                try
+                {
+                    point[i, l] = false;
+                }
+                catch(System.NullReferenceException)
+                {
+                    Debug.Log("Riseterror["+ i +","+ l+"]");
                 }
             }
         }

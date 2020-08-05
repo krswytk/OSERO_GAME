@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class CcreateCoin : MonoBehaviour//初期の設定　すべてのマスに透明なコインを配置する
 {
-    [SerializeField] Sprite BlackImage;//●画像を格納
-    [SerializeField] Sprite WhiteImage;//○画像を格納
-    [SerializeField] Sprite GaidImage;//ガイド画像を格納
-    [SerializeField] Sprite ClearImage;//透明画像を格納
-    [SerializeField] GameObject CoinPrefab;//生成するコインのプレハブ
-    [SerializeField] GameObject prent;//生成するコインのプレハブ
+    [SerializeField] public Sprite BlackImage;//●画像を格納
+    [SerializeField] public Sprite WhiteImage;//○画像を格納
+    [SerializeField] public Sprite GaidImage;//ガイド画像を格納
+    [SerializeField] public Sprite ClearImage;//透明画像を格納
+    [SerializeField] public GameObject CoinPrefab;//生成するコインのプレハブ
+    [SerializeField] public GameObject prent;//生成するコインのプレハブ
 
     public CoinClass[,] Coin;
     // Start is called before the first frame update

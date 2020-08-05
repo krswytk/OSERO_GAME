@@ -3,7 +3,13 @@ guid: cd4efd74769d82c4d90b7448c2f71edf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - BlackImage: {instanceID: 0}
+  - WhiteImage: {instanceID: 0}
+  - GaidImage: {instanceID: 0}
+  - ClearImage: {instanceID: 0}
+  - CoinPrefab: {instanceID: 0}
+  - prent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

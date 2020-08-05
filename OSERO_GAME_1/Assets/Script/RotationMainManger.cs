@@ -8,6 +8,8 @@ public class RotationMainManger : MonoBehaviour
     GaidPoint GP;
     CoinClass[,] Coin;
     ChangeCoin CC;
+    private bool[,] point;
+
     // Update is called once per frame    
     void Start()
     {
@@ -15,6 +17,8 @@ public class RotationMainManger : MonoBehaviour
         T = this.GetComponent<Turn>();
         GP = this.GetComponent<GaidPoint>();
         CC = this.GetComponent<ChangeCoin>();
+        point = this.GetComponent<GaidPoint>().point;
+        GP.Gaid();//初手のガイドを呼び出す
     }
 
     void Update()
@@ -24,15 +28,22 @@ public class RotationMainManger : MonoBehaviour
             try
             {
                 //Debug.Log(ClickMousePos.posx + "  " + ClickMousePos.posy);
-                if (Coin[ClickMousePos.posx, ClickMousePos.posy].GetSet() == false)
+                if (Coin[ClickMousePos.posx, ClickMousePos.posy].GetSet() == false)//コインがまだ置かれていない
                 {
-                    Coin[ClickMousePos.posx, ClickMousePos.posy].SetCoin(T.turn);//コインを生成
-                    CC.Change(ClickMousePos.posx, ClickMousePos.posy);
-                    //ここにひっくり返す処理
+                    if (point[ClickMousePos.posx, ClickMousePos.posy] == true)//コインが設置可能マスである。（ガイドが表示されている）
+                    {
+                        Coin[ClickMousePos.posx, ClickMousePos.posy].SetCoin(T.turn);//コインを生成
+                        CC.Change(ClickMousePos.posx, ClickMousePos.posy);//コインをひっくり返す
 
-                    T.CS();//この時点でターンが切り替わる
-                    GP.Gaid();//ここでターンを呼べば次のターンが取れる　falseで白
-                    ClickMousePos.Down = false;
+                        T.CS();//この時点でターンが切り替わる
+                        GP.Gaid();//ここでターンを呼べば次のターンが取れる　falseで白
+                        ClickMousePos.Down = false;
+                    }
+                    else
+                    {
+                        Debug.Log("そこは置けないよ");
+                        ClickMousePos.Down = false;
+                    }
                 }
                 else
                 {
