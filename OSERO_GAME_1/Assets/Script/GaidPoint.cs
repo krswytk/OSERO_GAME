@@ -17,7 +17,7 @@ public class GaidPoint : MonoBehaviour
         T = this.GetComponent<Turn>();
         point = new bool[8, 8];
         //RisetPoint();
-        Debug.Log(Coin[1, 1].GetSet());
+        //Debug.Log(Coin[1, 1].GetSet());
     }
 
     public void Gaid()//この中でのみ配列参照が出来ていない

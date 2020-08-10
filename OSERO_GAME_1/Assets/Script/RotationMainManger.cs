@@ -63,6 +63,11 @@ public class RotationMainManger : MonoBehaviour
                 Debug.Log("そこは押せないよ！！");
                 ClickMousePos.Down = false;
             }
+            catch (System.IndexOutOfRangeException)
+            {
+                Debug.Log("そこは押す場所じゃないよ！！");
+                ClickMousePos.Down = false;
+            }
         }
     }
 }

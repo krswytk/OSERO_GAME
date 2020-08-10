@@ -1,27 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpecialCoinB : MonoBehaviour
 {
-    CcreateCoin CC;
-    GameObject EV;
     private bool SCSW;
     private bool sw;//特殊コインを設置したがどうか　初期false
+    private Button B;
     // Start is called before the first frame update
+    //Color colors;
     void Start()
     {
-        EV = GameObject.Find("EventSystem");
-        CC = EV.GetComponent<CcreateCoin>();
         SCSW = false;
         sw = false;
+        B = GetComponent<Button>();
+        //colors = B.colors;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void SpecialBotton()
     {
@@ -31,11 +27,12 @@ public class SpecialCoinB : MonoBehaviour
             {
                 SCSW = false;
                 //ここに推してない状態
+                B.GetComponentInChildren<Image>().color = new Color(1,1,1,1);
             }
             else
             {
                 SCSW = true;
-                //押している状態
+                B.GetComponentInChildren<Image>().color = new Color(1,1/2,1/2,1);
             }
         }
     }
@@ -50,6 +47,6 @@ public class SpecialCoinB : MonoBehaviour
         sw = true;
         SCSW = false;
         //灰色にして押せなくなる処理
-        this.gameObject.SetActive(false);
+        B.interactable = false;
     }
 }
