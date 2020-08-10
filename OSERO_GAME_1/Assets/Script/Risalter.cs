@@ -56,6 +56,7 @@ public class Risalter : MonoBehaviour
 
     public void GameSet()
     {
+        Debug.Log("GameSetが呼び出されました。ゲームを終了します");
         for (int i = 0; i < 8; i++)
         {
             for (int l = 0; l < 8; l++)
