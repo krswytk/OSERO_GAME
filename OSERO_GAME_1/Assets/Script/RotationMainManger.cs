@@ -8,6 +8,7 @@ public class RotationMainManger : MonoBehaviour
     GaidPoint GP;
     CoinClass[,] Coin;
     ChangeCoin CC;
+    SpecialCoinB SCB;
     private bool[,] point;
 
     // Update is called once per frame    
@@ -18,6 +19,7 @@ public class RotationMainManger : MonoBehaviour
         GP = this.GetComponent<GaidPoint>();
         CC = this.GetComponent<ChangeCoin>();
         point = this.GetComponent<GaidPoint>().point;
+        SCB = GameObject.Find("Button").GetComponent<SpecialCoinB>();
         GP.Gaid();//初手のガイドを呼び出す
     }
 
@@ -32,6 +34,11 @@ public class RotationMainManger : MonoBehaviour
                 {
                     if (point[ClickMousePos.posx, ClickMousePos.posy] == true)//コインが設置可能マスである。（ガイドが表示されている）
                     {
+                        if (SCB.GetSCSW())
+                        {
+                            Coin[ClickMousePos.posx, ClickMousePos.posy].ONSC();//特殊コインを設置
+                            SCB.ONSW();//特殊コインを封印
+                        }
                         Coin[ClickMousePos.posx, ClickMousePos.posy].SetCoin(T.turn);//コインを生成
                         CC.Change(ClickMousePos.posx, ClickMousePos.posy);//コインをひっくり返す
 
