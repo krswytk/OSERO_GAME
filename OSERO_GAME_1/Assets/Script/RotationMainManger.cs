@@ -43,7 +43,9 @@ public class RotationMainManger : MonoBehaviour
                         }
                         Coin[ClickMousePos.posx, ClickMousePos.posy].SetCoin(T.turn);//コインを生成
                         CC.Change(ClickMousePos.posx, ClickMousePos.posy);//コインをひっくり返す
+
                         R.SetSharc();//ゲーム終了かどうかを判定　
+
                         T.CS();//この時点でターンが切り替わる
                         GP.Gaid();//ここでターンを呼べば次のターンが取れる　falseで白
                         ClickMousePos.Down = false;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Risalter : MonoBehaviour
 {
@@ -31,22 +32,26 @@ public class Risalter : MonoBehaviour
 
     public void SetSharc()
     {
+        int num = 0;
+        Debug.Log("SetSharcが呼ばれた");
         for (int i = 0; i < 8; i++)
         {
             for (int l = 0; l < 8; l++)
             {
                 if (Coin[i,l].GetSet() == true) {//コインが設置されている
 
-
+                    num++;
                 }
                 else
                 {
+                    //Debug.Log("現在コイン(ただしチョー不確定) "+num);
                     return;//関数から抜ける
                 }
             }
         }
         //ここまでくる＝すべて設置されている
-        GameSet();//リザルト処理を行う
+        Debug.Log("GameSetを確認");
+        //GameSet();//リザルト処理を行う
     }
 
     public void GameSet()
@@ -66,10 +71,18 @@ public class Risalter : MonoBehaviour
             }
         }
 
+        Gameset.SetActive(true);
+        B.text = b.ToString();
+        W.text = w.ToString();
+        if(b>w) BSTR.SetActive(true);
+        else WSTR.SetActive(true);
 
         while (true)//処理を繰り返す　ロードシーンで強制的に抜け出す
         {
-
+            if (Input.anyKeyDown)//何かキーが押された
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
         

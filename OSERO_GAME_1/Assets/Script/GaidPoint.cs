@@ -262,6 +262,7 @@ public class GaidPoint : MonoBehaviour
 
         if(pass == true)
         {
+            Debug.Log("Passが発生しました");
             T.CS();
             Gaid();
         }
