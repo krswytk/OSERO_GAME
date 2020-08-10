@@ -65,13 +65,17 @@ public class Risalter : MonoBehaviour
         {
             for (int l = 0; l < 8; l++)
             {
-                if (Coin[i, l].GetFAB() == true)
+                if (Coin[i, l].GetFAB() == true && Coin[i, l].GetSet())
                 {
                     b++;//黒の枚数
                 }
-                else
+                else if(Coin[i, l].GetFAB() == false && Coin[i, l].GetSet())
                 {
                     w++;//白の枚数
+                }
+                else
+                {
+                    Debug.LogError("コインが設置されていないマスがあります。問題ないでしょうか？");
                 }
             }
         }
