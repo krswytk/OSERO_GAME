@@ -9,6 +9,7 @@ public class GaidPoint : MonoBehaviour
     public bool[,] point;
     private bool G;
     private bool pass;
+    Risalter R;
     // Update is called o
     // Start is called before the first frame update
     void Start()
@@ -16,11 +17,12 @@ public class GaidPoint : MonoBehaviour
         Coin = this.GetComponent<CcreateCoin>().Coin;
         T = this.GetComponent<Turn>();
         point = new bool[8, 8];
+        R = this.GetComponent<Risalter>();
         //RisetPoint();
         //Debug.Log(Coin[1, 1].GetSet());
     }
 
-    public void Gaid()//この中でのみ配列参照が出来ていない
+    public void Gaid(bool p)//この中でのみ配列参照が出来ていない
     {
         RisetPoint();
         pass = true;
@@ -260,13 +262,21 @@ public class GaidPoint : MonoBehaviour
             }
         }
 
-        if(pass == true)
+        if(pass == true)//恐らく無限ループの元凶
         {
+            if(p == true)
+            {
+                R.GameSet();
+                Debug.Log("どちらも設置できません");
+                return;
+            }
             Debug.Log("Passが発生しました");
             T.CS();
-            Gaid();
+            Gaid(true);
         }
     }
+
+
 
     private void RisetPoint()
     {

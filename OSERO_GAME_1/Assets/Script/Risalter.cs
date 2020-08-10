@@ -57,6 +57,10 @@ public class Risalter : MonoBehaviour
     public void GameSet()
     {
         Debug.Log("GameSetが呼び出されました。ゲームを終了します");
+        b = 0;w = 0;
+        Debug.Log(Coin[0, 7].GetFAB());
+        Debug.Log(Coin[1, 7].GetFAB());
+        Debug.Log(Coin[2, 7].GetFAB());
         for (int i = 0; i < 8; i++)
         {
             for (int l = 0; l < 8; l++)
@@ -78,13 +82,13 @@ public class Risalter : MonoBehaviour
         if(b>w) BSTR.SetActive(true);
         else WSTR.SetActive(true);
 
-        while (true)//処理を繰り返す　ロードシーンで強制的に抜け出す
+        /*while (true)//処理を繰り返す　ロードシーンで強制的に抜け出す
         {
             if (Input.anyKeyDown)//何かキーが押された
             {
                 SceneManager.LoadScene(0);
             }
-        }
+        }*/
     }
         
 }
