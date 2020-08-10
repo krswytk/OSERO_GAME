@@ -16,6 +16,8 @@ public class Risalter : MonoBehaviour
     Text B,W;
     int b, w;
 
+    bool i;
+
     private void Start()
     {
         Coin = this.GetComponent<CcreateCoin>().Coin;
@@ -24,34 +26,18 @@ public class Risalter : MonoBehaviour
         WSTR.SetActive(false);
         B = BC.GetComponent<Text>();
         W = WC.GetComponent<Text>();
-
+        i = false;
     }
 
-
-
-
-    public void SetSharc()
+    private void Update()
     {
-        int num = 0;
-        Debug.Log("SetSharcが呼ばれた");
-        for (int i = 0; i < 8; i++)
+        if (i == true)
         {
-            for (int l = 0; l < 8; l++)
+            if (Input.anyKeyDown)//何かキーが押された
             {
-                if (Coin[i,l].GetSet() == true) {//コインが設置されている
-
-                    num++;
-                }
-                else
-                {
-                    //Debug.Log("現在コイン(ただしチョー不確定) "+num);
-                    return;//関数から抜ける
-                }
+                SceneManager.LoadScene(0);
             }
         }
-        //ここまでくる＝すべて設置されている
-        Debug.Log("GameSetを確認");
-        //GameSet();//リザルト処理を行う
     }
 
     public void GameSet()
@@ -85,14 +71,8 @@ public class Risalter : MonoBehaviour
         W.text = w.ToString();
         if(b>w) BSTR.SetActive(true);
         else WSTR.SetActive(true);
+        i = true;
 
-        /*while (true)//処理を繰り返す　ロードシーンで強制的に抜け出す
-        {
-            if (Input.anyKeyDown)//何かキーが押された
-            {
-                SceneManager.LoadScene(0);
-            }
-        }*/
     }
         
 }

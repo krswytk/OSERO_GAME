@@ -264,9 +264,9 @@ public class GaidPoint : MonoBehaviour
 
         if(pass == true)//恐らく無限ループの元凶
         {
-            if(p == true)
+            if(p == true)//一回パスしてまたパスしていた場合　つまり置けるところが双方ない場合
             {
-                R.GameSet();
+                R.GameSet();//リザルト処理を行う
                 Debug.Log("どちらも設置できません");
                 return;
             }

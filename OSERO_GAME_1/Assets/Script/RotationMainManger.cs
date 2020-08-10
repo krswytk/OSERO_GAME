@@ -9,7 +9,6 @@ public class RotationMainManger : MonoBehaviour
     CoinClass[,] Coin;
     ChangeCoin CC;
     SpecialCoinB SCB;
-    Risalter R;
     private bool[,] point;
 
     // Update is called once per frame    
@@ -20,7 +19,6 @@ public class RotationMainManger : MonoBehaviour
         GP = this.GetComponent<GaidPoint>();
         CC = this.GetComponent<ChangeCoin>();
         point = this.GetComponent<GaidPoint>().point;
-        R = this.GetComponent<Risalter>();
         SCB = GameObject.Find("Button").GetComponent<SpecialCoinB>();
         GP.Gaid(false);//初手のガイドを呼び出す
     }
@@ -49,8 +47,6 @@ public class RotationMainManger : MonoBehaviour
                         //Debug.Log("log5");
                         Coin[ClickMousePos.posx, ClickMousePos.posy].SetCoin(T.turn);//コインを生成
                         CC.Change(ClickMousePos.posx, ClickMousePos.posy);//コインをひっくり返す
-
-                        //R.SetSharc();//ゲーム終了かどうかを判定　
 
                         T.CS();//この時点でターンが切り替わる
                         //Debug.Log("log6");
