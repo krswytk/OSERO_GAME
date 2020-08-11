@@ -10,6 +10,8 @@ public class GaidPoint : MonoBehaviour
     private bool G;
     private bool pass;
     Risalter R;
+    int r;
+    int Surrounding;
     // Update is called o
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class GaidPoint : MonoBehaviour
         {
             for (int l = 0; l < 8; l++)
             {
+                r = 0;//めくれるコインの枚数
+                Surrounding = 0;//周囲にあるコインの枚数
                 if (Coin[i, l].GetSet() == false)//コインが設置されていなければ
                 {
                     Coin[i, l].Clear();//コインが設置されていなければクリアを行う
@@ -50,6 +54,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp- 1);
                                     break;
                                 }
                                 break;
@@ -78,6 +83,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp - 1);
                                     break;
                                 }
                                 break;
@@ -106,6 +112,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp - 1);
                                     break;
                                 }
                                 break;
@@ -134,6 +141,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp - 1);
                                     break;
                                 }
                                 break;
@@ -162,6 +170,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp - 1);
                                     break;
                                 }
                                 break;
@@ -190,6 +199,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp - 1);
                                     break;
                                 }
                                 break;
@@ -218,6 +228,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp - 1);
                                     break;
                                 }
                                 break;
@@ -246,6 +257,7 @@ public class GaidPoint : MonoBehaviour
                                     Coin[i, l].SetGaid();//ガイドを設置する
                                     point[i, l] = true;//ガイド座標をtrueに
                                     pass = false;
+                                    r += (lp - 1);
                                     break;
                                 }
                                 break;
@@ -259,6 +271,22 @@ public class GaidPoint : MonoBehaviour
                         }
                     }
                 }
+                try
+                {
+                    if (Coin[i, l + 1].GetSet()) Surrounding++;
+                    if (Coin[i + 1, l].GetSet()) Surrounding++;
+                    if (Coin[i, l - 1].GetSet()) Surrounding++;
+                    if (Coin[i - 1, l].GetSet()) Surrounding++;
+                    if (Coin[i + 1, l + 1].GetSet()) Surrounding++;
+                    if (Coin[i - 1, l - 1].GetSet()) Surrounding++;
+                    if (Coin[i + 1, l - 1].GetSet()) Surrounding++;
+                    if (Coin[i - 1, l + 1].GetSet()) Surrounding++;
+                }
+                catch (System.IndexOutOfRangeException)
+                {
+                }
+                Coin[i, l].SetSurrounding(Surrounding);
+                Coin[i, l].SetR(r);
             }
         }
 

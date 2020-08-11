@@ -44,7 +44,9 @@ public class CoinClass
     private bool Set;//コインがあるかどうかの判定
     private bool FAB;//コインが黒か白の判定　黒ならtrue
     private bool SC;//特殊コインの判定　trueならコインが変わらなくなる
-
+    private bool Gaid;//
+    private int r;//特殊コインの判定　trueならコインが変わらなくなる
+    private int Surrounding;
     public CoinClass(GameObject c,Sprite BI, Sprite WI, Sprite GI, Sprite CI)
     {
         CSP = c.GetComponent<Image>();
@@ -54,6 +56,9 @@ public class CoinClass
         this.CI = CI;
         this.Set = false;
         SC = false;
+        Gaid = false;
+        r = 0;
+        Surrounding = 0;
     }
 
     private void SB()
@@ -81,6 +86,7 @@ public class CoinClass
                 SW();
             }
 
+            Gaid = false;
             Set = true;
         }
     }
@@ -120,9 +126,32 @@ public class CoinClass
     public void SetGaid()//ガイド画像を表示
     {
         CSP.sprite = GI;
+        Gaid = true;
     }
     public void Clear()//表示中画像をクリアにする//正確には透明な画像を入れる
     {
         CSP.sprite = CI;
+        Gaid = false;
+    }
+    public bool GetGaid()
+    {
+        return Gaid;
+    }
+
+    public void SetR(int r)
+    {
+        this.r = r;
+    }
+    public int GetR()
+    {
+        return r;
+    }
+    public void SetSurrounding(int S)
+    {
+        this.Surrounding = S;
+    }
+    public int GetSurrounding()
+    {
+        return Surrounding;
     }
 }

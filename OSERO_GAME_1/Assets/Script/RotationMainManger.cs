@@ -9,6 +9,7 @@ public class RotationMainManger : MonoBehaviour
     CoinClass[,] Coin;
     ChangeCoin CC;
     SpecialCoinB SCB;
+    GameAI GA;
     private bool[,] point;
 
     // Update is called once per frame    
@@ -20,6 +21,7 @@ public class RotationMainManger : MonoBehaviour
         CC = this.GetComponent<ChangeCoin>();
         point = this.GetComponent<GaidPoint>().point;
         SCB = GameObject.Find("Button").GetComponent<SpecialCoinB>();
+        GA = this.GetComponent<GameAI>();
         GP.Gaid(false);//初手のガイドを呼び出す
     }
 
@@ -39,6 +41,8 @@ public class RotationMainManger : MonoBehaviour
                     if (point[ClickMousePos.posx, ClickMousePos.posy] == true)//コインが設置可能マスである。（ガイドが表示されている）
                     {
                         //Debug.Log("log4");
+                        Debug.Log("r = " + Coin[ClickMousePos.posx, ClickMousePos.posy].GetR());
+                        Debug.Log("Surrounding = " + Coin[ClickMousePos.posx, ClickMousePos.posy].GetSurrounding());
                         if (SCB.GetSCSW())
                         {
                             Coin[ClickMousePos.posx, ClickMousePos.posy].ONSC();//特殊コインを設置
@@ -77,5 +81,13 @@ public class RotationMainManger : MonoBehaviour
                 ClickMousePos.Down = false;
             }
         }
+
+        ///*
+        if(T.turn == false)//もし白のターンだったら
+        {
+            Debug.Log("\n----AI呼び出し----\n");
+            GA.MainAI();//ゲームAIを呼び出す
+        }
+        //*/
     }
 }

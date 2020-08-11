@@ -12,6 +12,7 @@ public class Risalter : MonoBehaviour
     [SerializeField] GameObject BC;
     [SerializeField] GameObject WC;
     CoinClass[,] Coin;
+    RotationMainManger RMM;
 
     Text B,W;
     int b, w;
@@ -27,6 +28,7 @@ public class Risalter : MonoBehaviour
         B = BC.GetComponent<Text>();
         W = WC.GetComponent<Text>();
         i = false;
+        RMM = this.GetComponent<RotationMainManger>();
     }
 
     private void Update()
@@ -72,6 +74,7 @@ public class Risalter : MonoBehaviour
         if(b>w) BSTR.SetActive(true);
         else WSTR.SetActive(true);
         i = true;
+        RMM.enabled = false;
 
     }
         
