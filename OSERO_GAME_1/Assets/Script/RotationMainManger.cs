@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿//名前 PR利用了解しました。日付.2020/08/20 桐澤悠空
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class RotationMainManger : MonoBehaviour
 {
@@ -11,6 +14,7 @@ public class RotationMainManger : MonoBehaviour
     SpecialCoinB SCB;
     GameAI GA;
     private bool[,] point;
+    AudioSource audioSource;
 
     // Update is called once per frame    
     void Start()
@@ -23,6 +27,7 @@ public class RotationMainManger : MonoBehaviour
         SCB = GameObject.Find("Button").GetComponent<SpecialCoinB>();
         GA = this.GetComponent<GameAI>();
         GP.Gaid(false);//初手のガイドを呼び出す
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -50,6 +55,7 @@ public class RotationMainManger : MonoBehaviour
                         }
                         //Debug.Log("log5");
                         Coin[ClickMousePos.posx, ClickMousePos.posy].SetCoin(T.turn);//コインを生成
+                        audioSource.Play();
                         CC.Change(ClickMousePos.posx, ClickMousePos.posy);//コインをひっくり返す
 
                         T.CS();//この時点でターンが切り替わる

@@ -37,7 +37,7 @@ public class Risalter : MonoBehaviour
         {
             if (Input.anyKeyDown)//何かキーが押された
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
         }
     }

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//参考Web
+//https://nanapi.jp/ja/118539 元世界チャンピオンが教える！超戦略的オセロ必勝法
+
 public class GameAI : MonoBehaviour
 {
     Turn T;
@@ -113,10 +116,24 @@ public class GameAI : MonoBehaviour
             {
                 if (Coin[i, l].GetGaid() == true)//設置可能マスである
                 {
-                    r = Coin[i, l].GetR() + Coin[i, l].GetSurrounding();//周囲の設置可能マスとそこに設置した際の返すコインの枚数　どちらも少ないとよい
+                    r = Coin[i, l].GetR() + Coin[i, l].GetSurrounding();//周囲の設置可能マス(max8)とそこに設置した際の返すコインの枚数　どちらも少ないとよい
                     if ((i < 2 && l < 2) || (i < 2 && l > 5) || (i > 5 && l < 2) || (i > 5 && l > 5)) r += 5;//四隅の周りの場合は評価を下げる
                     if ((i == 0 && l == 0) || (i == 0 && l == 7) || (i == 7 && l == 0) || (i == 7 && l == 7)) r -= 5;//4隅の場合は評価を上げる
                     if ((i == 0) || (l == 7) || (i == 7) || (l == 0)) r += 2;//辺の場合は評価を少し下げる
+                    if(i == 0 || i == 7)
+                    {
+                        if(Coin[i,l+1].GetFAB() == true && Coin[i, l - 1].GetFAB() == true)
+                        {
+                            r -= 4;//辺であるけど、おいても取られない場合挟まれる場合　評価を上げる　　●␣●　のようなとき
+                        }
+                    }
+                    if (l == 0 || l == 7)
+                    {
+                        if (Coin[i + 1, l].GetFAB() == true && Coin[i - 1, l].GetFAB() == true)
+                        {
+                            r -= 4;//辺であるけど、おいても取られない場合挟まれる場合　評価を上げる　　●␣●　のようなとき
+                        }
+                    }
 
 
                     if (Evaluation >= r)//既存の設定値より値が低い　＝　評価が高い場合
@@ -157,7 +174,7 @@ public class GameAI : MonoBehaviour
             {
                 if (Coin[i, l].GetGaid() == true)//設置可能マスである
                 {
-                    r = Coin[i, l].GetR() - Coin[i, l].GetSurrounding();//周囲の設置可能マスとそこに設置した際の返すコインの枚数　どちらも少ないとよい
+                    r = Coin[i, l].GetR() - Coin[i, l].GetSurrounding();//周囲の設置可能マスとそこに設置した際の返すコインの枚数　周囲マスが少なく、多くコインを返せるマスが良い
                     if ((i < 2 && l < 2) || (i < 2 && l > 5) || (i > 5 && l < 2) || (i > 5 && l > 5)) r += 5;//四隅の周りの場合は評価を下げる
                     if ((i == 0 && l == 0) || (i == 0 && l == 7) || (i == 7 && l == 0) || (i == 7 && l == 7)) r -= 5;//4隅の場合は評価を上げる
                     if ((i == 0) || (l == 7) || (i == 7) || (l == 0)) r += 2;//辺の場合は評価を少し下げる
@@ -183,7 +200,7 @@ public class GameAI : MonoBehaviour
             }
         }
 
-    }
+    }//終盤の処理
 
     public bool RandomBool()
     {
